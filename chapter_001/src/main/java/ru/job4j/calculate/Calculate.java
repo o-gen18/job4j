@@ -22,9 +22,9 @@ public class Calculate {
  	 */
 	 public String echo(String name) {
 	 return "Echo, echo, echo : " + name;
-	 /**
-	  * Этот метод принимает параметр name и 
-	  * возвращает строчку "Echo, echo, echo : "
+	 /*
+	   Этот метод принимает параметр name и
+	   возвращает строчку "Echo, echo, echo : "
 	  */
 	 }
 }
