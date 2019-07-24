@@ -6,9 +6,8 @@ public class Point {
         double y=y2-y1;
         double first=Math.pow(x,2);
         double second=Math.pow(y,2);
-        double root=first+second;
-        double dist=Math.sqrt(root);
-        return dist;
+        return Math.sqrt(first+second);
+
     }
     public static void main(String[]args){
         double result = distance(8,11,11,15);
