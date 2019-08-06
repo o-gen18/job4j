@@ -1,4 +1,4 @@
-package ru.job4.condition;
+package ru.job4j.condition;
 
 import org.junit.Test;
 import ru.job4j.condition.DummyBot;
