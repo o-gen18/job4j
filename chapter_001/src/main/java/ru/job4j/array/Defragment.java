@@ -11,7 +11,6 @@ public class Defragment {
                 array[index]=array[i];
                 array[i]=null;
             };
-
             System.out.print(array[index] + " ");
         }
         return array;
