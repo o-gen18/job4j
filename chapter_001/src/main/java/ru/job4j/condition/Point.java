@@ -1,20 +1,27 @@
 package ru.job4j.condition;
 
-public class Point {
-    public static double distance(int x1, int y1, int x2, int y2){
-        double x=x2-x1;
-        double y=y2-y1;
-        double first=Math.pow(x,2);
-        double second=Math.pow(y,2);
-        return Math.sqrt(first+second);
-    }
-    public static void main(String[]args){
-        double result = distance(8,11,11,15);
-        System.out.println("Расстояние от точки (8,11) до точки (11,15) равно " + result);
-        double result2 = distance(7,10,9,14);
-        System.out.println("Расстояние от точки (7,10) до точки (9,14) равно " + result2);
-        double result3 = distance(22,33,44,66);
-        System.out.println("Расстояние от точки (22,33) до точки (44,66) равно " + result3);
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
 
+public class Point {
+    /**
+     * Это поля объекта. Они доступно только конкретному объекту
+     */
+    private int x;
+    private int y;
+
+    public Point(int first, int second){ //Создаётся конструктор для инициализации начального состояния
+        this.x = first;
+        this.y = second;
+    }
+
+    public double distance(Point that) { // Метод принимает переменную типа Point, имеющую 2 параметра, приравниваемы соответственно к x и y
+        return sqrt(pow(this.x-that.x, 2) + pow(this.y-that.y, 2));
+    }
+    public static void main(String[] args){
+        Point a = new Point(0, 0);
+        Point b = new Point(5, 5);
+        double dist = a.distance(b);
+        System.out.println(dist);
     }
 }
