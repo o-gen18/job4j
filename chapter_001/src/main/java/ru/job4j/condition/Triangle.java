@@ -1,30 +1,31 @@
 package ru.job4j.condition;
 
 public class Triangle {
-    /**
-     * Метод вычисления полупериметра по длинам сторон.
-     * Формула
-     * (a+b+c)/2
-     * @param a расстояние между точками a b
-     * @param b расстояние между точками a c
-     * @param c расстояние между точками b c
-     * @return полупериметр
-     */
-    public double period(double a, double b, double c){
-        return (a+b+c)/2;
+    private Point first;
+    private Point second;   //Создаём 3 поля типа Point
+    private Point third;
+
+    public Triangle(Point ap, Point bp, Point cp) {
+        this.first = ap;
+        this.second = bp;   // Создаём конструктор с тремя переменными типа Point
+        this.third = cp;
     }
+
+        public double period(double ab, double bc, double ca) {
+            return (ab + bc + ca) / 2;
+        }
     /**
      * Метод проверяет можно ли построить треугольник с такими длинами сторон
      *
      * Сумма любыз двуз сторон должна быть больше третьей
      *
      * @param ab Длина от точки a до b.
-     * @param ac Длина от точки a до c.
+     * @param ca Длина от точки c до a.
      * @param bc Длина от точки b до c.
      * @return true or false
      */
-    private boolean exist(double ab, double ac, double bc){
-        return ((ab+ac)>bc)&&((ab+bc)>ac)&&((bc+ac)>ab);
+    private boolean exist(double ab, double bc, double ca){
+        return ((ab+bc)>ca)&&((ab+ca)>bc)&&((bc+ca)>ab);
     }
     /**
      * Метод должен вычислять площадь треугольника
@@ -33,15 +34,17 @@ public class Triangle {
      * Квадратный корень извлекать при помощь метода Math.sqrt().
      * @return вернуть площадь, если треугольник существует
      */
-    public double area(int x1, int y1, int x2, int y2, int x3, int y3) {
+
+
+    public double area(Point a, Point b, Point c) {
         double rsl = -1;
-        double a = new Point().distance(x1, y1, x2, y2);
-        double b = new Point().distance(x2, y2, x3, y3);
-        double c = new Point().distance(x1, y1, x3, y3);
-        double p = period(a, b, c);
-        if (this.exist(a, b, c)) {
+        double ab = first.distance(second);
+        double bc = second.distance(third);
+        double ca = third.distance(first);
+        double p = period(ab,bc,ca);
+        if (this.exist(ab, bc, ca)) {
             //формула для рассчета площади треугольника
-            rsl = Math.sqrt(p*(p - a) * (p - b) * (p - c));
+            rsl = Math.sqrt(p*(p - ab) * (p - bc) * (p - ca));
         }
         return rsl;
     }
