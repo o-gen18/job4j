@@ -23,4 +23,16 @@ public class MaxTest {
         int result = max.max(67,67);
         assertThat(result, is(67));
     }
+    @Test
+    public void whenMaxOutOfThree(){
+        Max max = new Max();
+        int result = max.max(54,45,1000);
+        assertThat(result,is(1000));
+    }
+    @Test
+    public void whenMaxOutOfFour(){
+        Max max = new Max();
+        int result = max.max(321,4,123,32);
+        assertThat(result,is(321));
+    }
 }
