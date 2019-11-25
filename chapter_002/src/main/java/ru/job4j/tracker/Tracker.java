@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 import ru.job4j.tracker.Item;
 import java.util.Random;
+import java.util.Objects;
 
 /**
  * @version $Id$
@@ -37,8 +38,8 @@ public class Tracker {
 
     public boolean replace(String id, Item item) {
         boolean result = false;
-        for (int i = 0; i <= this.position; i++) {
-            if (this.items[i].getId() == id) {
+        for (int i = 0; i < this.position; i++) {
+            if ((this.items[i].getId()).equals(id)) {
                 this.items[i] = item;
                 result = true;
             }
@@ -48,8 +49,8 @@ public class Tracker {
 
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i <= this.position; i++) {
-            if (this.items[i].getId() == id) {
+        for (int i = 0; i < this.position; i++) {
+            if ((this.items[i].getId()).equals(id)) {
                 System.arraycopy(items, i + 1, items, i, 1);
                 items[this.position] = null;
                 result = true;
@@ -60,7 +61,7 @@ public class Tracker {
 
     public Item[] findAll() {
         Item[] itemscopy = new Item[this.position];
-        for (int i = 0; i <= this.position; i++) {
+        for (int i = 0; i < this.position; i++) {
             itemscopy[i] = this.items[i];
         }
         return itemscopy;
@@ -69,8 +70,8 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] itemsnames = new Item[this.position];
         int k = 0;
-        for (int i = 0; i <= this.position; i++) {
-            if (this.items[i].getName() == key) {
+        for (int i = 0; i < this.position; i++) {
+            if ((this.items[i].getName()).equals(key)) {
                 itemsnames[k] = this.items[i];
                 k++;
             }
@@ -81,8 +82,8 @@ public class Tracker {
     public Item findById(String id) {
         Item result = new Item();
         result = null;
-        for (int i = 0; i <= this.position; i++) {
-            if (this.items[i].getId() == id) {
+        for (int i = 0; i < this.position; i++) {
+            if ((this.items[i].getId()).equals(id)) {
                 result = this.items[i];
             }
         }
