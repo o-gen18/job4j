@@ -41,6 +41,7 @@ public class Tracker {
         for (int i = 0; i < this.position; i++) {
             if ((this.items[i].getId()).equals(id)) {
                 this.items[i] = item;
+                item.setId(id);
                 result = true;
                 break;
             }
@@ -52,8 +53,8 @@ public class Tracker {
         boolean result = false;
         for (int i = 0; i < this.position; i++) {
             if ((this.items[i].getId()).equals(id)) {
-                System.arraycopy(items, (i + 1), items, i, 1);
-                items[this.position] = null;
+                System.arraycopy(items, (i + 1), items, i, this.position);
+                this.position--;
                 result = true;
                 break;
             }
@@ -78,7 +79,11 @@ public class Tracker {
                 k++;
             }
         }
-        return itemsnames;
+        Item[] itemsnamesfinal = new Item[k];
+        for (int i = 0; i < k; i++) {
+            itemsnamesfinal[i] = itemsnames[i];
+        }
+        return itemsnamesfinal;
     }
 
     public Item findById(String id) {
