@@ -32,12 +32,13 @@ public class PaintTest {
         assertThat(
                 this.out.toString(),
                 is(
-                        new StringBuilder()
-                            .append("-----\n\r")
-                            .append("|     |\n\r")
-                            .append("|     |\n\r")
-                            .append("_____\n\r")
-                            .append(System.lineSeparator())
+                        new StringJoiner(
+                                System.lineSeparator(), "",
+                                System.lineSeparator())
+                            .add("-----")
+                            .add("|     |")
+                            .add("|     |")
+                            .add("_____")
                             .toString()
                 )
         );
@@ -49,12 +50,13 @@ public class PaintTest {
         assertThat(
                 this.out.toString(),
                 is(
-                        new StringBuilder()
-                        .append("X\n\r")
-                        .append("XX\n\r")
-                        .append("XXX\n\r")
-                        .append("XXXX\n\r")
-                        .append(System.lineSeparator())
+                        new StringJoiner(
+                                System.lineSeparator(), "",
+                                System.lineSeparator())
+                        .add("X")
+                        .add("XX")
+                        .add("XXX")
+                        .add("XXXX")
                         .toString()
                 )
         );

@@ -1,6 +1,9 @@
 package ru.job4j.strategy;
 
 import org.junit.Test;
+
+import java.util.StringJoiner;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -17,11 +20,11 @@ public class SquareTest {
         assertThat(
                 square.draw(),
                 is(
-                        new StringBuilder()
-                        .append("-----\n\r")
-                        .append("|     |\n\r")
-                        .append("|     |\n\r")
-                        .append("_____\n\r")
+                        new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                        .add("-----")
+                        .add("|     |")
+                        .add("|     |")
+                        .add("_____")
                         .toString()
                 )
         );

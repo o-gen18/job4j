@@ -10,10 +10,10 @@ public class Square implements Shape {
     @Override
     public String draw() {
         StringBuilder sb = new StringBuilder();
-        sb.append("-----\n\r");
-        sb.append("|     |\n\r");
-        sb.append("|     |\n\r");
-        sb.append("_____\n\r");
+        sb.append("-----" + System.lineSeparator());
+        sb.append("|     |" + System.lineSeparator());
+        sb.append("|     |" + System.lineSeparator());
+        sb.append("_____" + System.lineSeparator());
         return sb.toString();
     }
 }
