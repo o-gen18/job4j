@@ -17,8 +17,24 @@ public class ValidateInputTest {
         );
         input.askInt("enter, 1");
         assertThat(
-                mem,
+                mem.toString(),
                 is(String.format("Please enter valid data again.%n"))
+        );
+        System.setOut(out);
+    }
+
+    @Test
+    public void whenIllegalStateException() {
+        PrintStream out = System.out;
+        ByteArrayOutputStream mem = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(mem));
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[] {"-1"})
+        );
+        input.askInt("enter from 0 to 6", 6);
+        assertThat(
+                mem.toString(),
+                is(String.format("Please select key from menu.%n"))
         );
         System.setOut(out);
     }
