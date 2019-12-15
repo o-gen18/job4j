@@ -29,7 +29,7 @@ public class ValidateInputTest {
         ByteArrayOutputStream mem = new ByteArrayOutputStream();
         System.setOut(new PrintStream(mem));
         ValidateInput input = new ValidateInput(
-                new StubInput(new String[] {"-1"})
+                new StubInput(new String[] {"-1", "1"})
         );
         input.askInt("enter from 0 to 6", 6);
         assertThat(
