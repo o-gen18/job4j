@@ -13,7 +13,7 @@ public class EditAction implements UserAction {
         System.out.println("Enter new name: ");
         Item item = new Item(input.askStr(""));
         if (tracker.replace(id, item)) {
-            System.out.println("The item has ben replaced with this new one: " + item.getName() + "\r\n");
+            System.out.println("The item has been replaced with this new one: " + item.getName() + "\r\n");
         } else {
             System.out.println("There has been no items found with this id: " + id + "\r\n");
         }

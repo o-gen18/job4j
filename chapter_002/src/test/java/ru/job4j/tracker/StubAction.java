@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
 
@@ -28,7 +31,9 @@ public class StubAction implements UserAction {
                 new String[] {"0"}
         );
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        ArrayList<UserAction> stubAction = new ArrayList<>();
+        stubAction.add(action);
+        new StartUI().init(input, new Tracker(), stubAction);
         assertThat(action.isCall(), is(true));
     }
 }
