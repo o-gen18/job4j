@@ -37,10 +37,10 @@ public class Tracker {
 
     public boolean replace(String id, Item item) {
         boolean result = false;
-        for (Item element : items) {
-            if ((element.getId()).equals(id)) {
+        for (int index = 0; index < items.size(); index++) {
+            if ((items.get(index).getId()).equals(id)) {
                 item.setId(id);
-                items.set(items.indexOf(element), item);
+                items.set(index, item);
                 result = true;
                 break;
             }
