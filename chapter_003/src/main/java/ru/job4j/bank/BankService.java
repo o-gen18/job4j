@@ -6,22 +6,26 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void add(User user) {
-        if(!(users.containsKey(user))) {
-            users.put(user, new ArrayList<Account>());
-        }
+        users.putIfAbsent(user, new ArrayList<Account>());
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-            if(!(users.get(user).contains(account))) {
-                users.get(user).add(account);
-            } else { System.out.println("Such account does already exist!");}
+            if (user != null) {
+                if (!(users.get(user).contains(account))) {
+                    users.get(user).add(account);
+                } else {
+                    System.out.println("Such account does already exist!");
+                }
+            } else {
+                System.out.println("Such user does not exist!");
+            }
     }
 
     public User findByPassport(String passport) {
         User user = null;
         for (User pass : users.keySet()) {
-            if (passport == pass.getPassport()) {
+            if (passport.equals(pass.getPassport())) {
                 user = pass;
                 break;
             }
@@ -47,6 +51,7 @@ public class BankService {
         Account userAcceptor = findByRequisite(destPassport, destRequisite);
         if (!(userAcceptor == null && userDonor.getBalance() < amount)) {
             userAcceptor.setBalance(userAcceptor.getBalance() + amount);
+            userDonor.setBalance(userDonor.getBalance() - amount);
             result = true;
         }
         return result;
