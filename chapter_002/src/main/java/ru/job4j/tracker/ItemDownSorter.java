@@ -5,6 +5,6 @@ import java.util.Comparator;
 public class ItemDownSorter implements Comparator<Item> {
     @Override
     public int compare(Item first, Item second) {
-        return (int) -(Long.parseLong(first.getId()) - Long.parseLong(second.getId()));
+        return (second.getId().compareTo(first.getId()));
     }
 }
