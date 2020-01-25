@@ -4,40 +4,22 @@ import java.util.Comparator;
 
 public class StringCompare implements Comparator<String> {
     @Override
-    public int compare(String left, String right) {
-        int i = 0;
-        if (left.length() > right.length()) {
-            for (int index = 0; index < right.length(); index++) {
-                if (right.charAt(index) < left.charAt(index)) {
-                    i = 1;
-                    break;
-                } else if (right.charAt(index) > left.charAt(index)) {
-                    i = -1;
-                    break;
-                } else i = 1;
+    public int compare(String first, String second) {
+        int result = 0;
+        int limit = first.length();
+        for (int i = 0; i < limit; i++) {
+            if ( limit <= second.length() ) {
+                result += Character.compare(first.charAt(i), second.charAt(i));
+                if (limit - i == 1) {
+                    result += Integer.compare(first.length(), second.length());
+                } else {
+                    result = result + 0;
+                }
+            } else {
+                limit = second.length();
+                i--;
             }
-        } else if (left.length() < right.length()) {
-            for (int index = 0; index < left.length(); index++) {
-                if (left.charAt(index) > right.charAt(index)) {
-                    i = 1;
-                    break;
-                } else if (left.charAt(index) < right.charAt(index)) {
-                    i = -1;
-                    break;
-                } else i = -1;
-            }
-        } else {
-            for (int index = 0; index < left.length(); index++) {
-                    if (left.charAt(index) > right.charAt(index)) {
-                        i = 1;
-                        break;
-                    } else if (left.charAt(index) < right.charAt(index)) {
-                        i = -1;
-                        break;
-                    }
-            }
-
         }
-        return i;
+        return result;
     }
 }
