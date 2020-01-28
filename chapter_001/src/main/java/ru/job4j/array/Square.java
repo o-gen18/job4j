@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class Square {
     public int[] calculate(int bound) {
         int[] rst = new int[bound];
-        int k=1;
+        int k = 1;
         for (int i = 0; i != bound; i++) {
-            rst[i] = k*k;
+            rst[i] = k * k;
             k++;
         }
         return rst;

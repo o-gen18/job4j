@@ -14,7 +14,7 @@ public class NotifyAccountTest {
     public void send() {
         List<Account> accounts = Arrays.asList(
                 new Account("123", "Petr Arsentev", "eDer3432f"),
-                new Account("142","Petr Arsentev", "000001"),
+                new Account("142", "Petr Arsentev", "000001"),
                 new Account("142", "OOOOO", "123123")
         );
         HashSet<Account> expect = new HashSet<>(

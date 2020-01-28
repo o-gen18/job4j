@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConvertList2Array {
-    public static int [][] toArray(List<Integer> list, int cells) {
+    public static int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells);
         int[][] array = new int[groups][cells];
         int row = 0, cell = 0;
         for (Integer num : list) {
-            if (cell > groups-1) {
+            if (cell > groups - 1) {
                 row++;
-                cell=0;
+                cell = 0;
             }
             array[row][cell++] = num;
         }

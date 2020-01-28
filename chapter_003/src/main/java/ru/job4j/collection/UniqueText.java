@@ -12,7 +12,10 @@ public class UniqueText {
             check.add(word);
         }
         for (int i = 0; i < check.size(); i++) {
-            if (!(check.contains(duplicate[i]))) rsl = false; break;
+            if (!(check.contains(duplicate[i]))) {
+                rsl = false;
+            }
+            break;
         }
         return rsl;
     }

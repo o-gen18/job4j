@@ -5,19 +5,23 @@ public class Calculator {
         double result = first + second;
         System.out.println(first + "+" + second + "=" + result);
     }
+
     public static void div(double first, double second) {
-        double result = first/second;
+        double result = first / second;
         System.out.println(first + "/" + second + "=" + result);
     }
+
     public static void multiply(double first, double second) {
-        double result = first*second;
+        double result = first * second;
         System.out.println(first + "*" + second + "=" + result);
     }
-    public static void subtrack(double first, double second){
+
+    public static void subtrack(double first, double second) {
         double result = first - second;
         System.out.println(first + "-" + second + "=" + result);
     }
-    public static void main(String[]args){
+
+    public static void main(String[] args) {
         add(1, 1);
         add(2, 2);
         div(7, 2);

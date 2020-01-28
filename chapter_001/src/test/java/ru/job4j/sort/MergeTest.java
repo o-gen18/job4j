@@ -9,54 +9,58 @@ import static org.junit.Assert.assertThat;
 @Ignore
 public class MergeTest {
     @Test
-    public void whenBothempty(){
+    public void whenBothempty() {
         Merge algo = new Merge();
         int[] expect = new int[0];
         int[] result = algo.merge(
                 new int[0],
                 new int[0]
         );
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
     }
+
     @Test
-    public void whenAscOrder(){
+    public void whenAscOrder() {
         Merge algo = new Merge();
-        int[] expect = {1,2,3,4};
+        int[] expect = {1, 2, 3, 4};
         int[] result = algo.merge(
-                new int[] {1,2},
-                new int[] {3,4}
+                new int[]{1, 2},
+                new int[]{3, 4}
         );
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
     }
+
     @Test
-    public void whenLeftGreat(){
+    public void whenLeftGreat() {
         Merge algo = new Merge();
-        int[] expect = {1,2,3,4,4};
+        int[] expect = {1, 2, 3, 4, 4};
         int[] result = algo.merge(
-                new int[] {1,2},
-                new int[] {3,4,4}
+                new int[]{1, 2},
+                new int[]{3, 4, 4}
         );
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
     }
+
     @Test
-    public void whenLeftLess(){
+    public void whenLeftLess() {
         Merge algo = new Merge();
-        int[] expect = {1,2,3,3,4};
+        int[] expect = {1, 2, 3, 3, 4};
         int[] result = algo.merge(
-                new int[] {1,2,3},
-                new int[] {3,4}
+                new int[]{1, 2, 3},
+                new int[]{3, 4}
         );
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
     }
+
     @Test
-    public void whenLeftEmpty(){
+    public void whenLeftEmpty() {
         Merge algo = new Merge();
-        int[] expect = {1,2,3,4};
+        int[] expect = {1, 2, 3, 4};
         int[] result = algo.merge(
                 new int[]{},
-                new int[] {1,2,3,4}
+                new int[]{1, 2, 3, 4}
         );
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
     }
 
 }

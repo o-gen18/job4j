@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.junit.Test;
+
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.Matchers.greaterThan;
@@ -21,6 +22,7 @@ public class UserComparatorSortTest {
         );
         assertThat(rsl, greaterThan(0));
     }
+
     @Test
     public void whenComparatorByNameDown() {
         Comparator<User> cmpNameDown = new UserDescByNameDown();
@@ -30,6 +32,7 @@ public class UserComparatorSortTest {
         );
         assertThat(rsl, lessThan(0));
     }
+
     @Test
     public void whenComparatorByAgeUp() {
         Comparator<User> cmpAgeUp = new UserDescByAgeUp();
@@ -39,6 +42,7 @@ public class UserComparatorSortTest {
         );
         assertThat(rsl, greaterThan(0));
     }
+
     @Test
     public void whenComparatorByAgeDown() {
         Comparator<User> cmpAgeDown = new UserDescByAgeDown();
@@ -48,6 +52,7 @@ public class UserComparatorSortTest {
         );
         assertThat(rsl, lessThan(0));
     }
+
     @Test
     public void whenComparatorByNameAndAgeDown() {
         List<User> users = Arrays.asList(
@@ -55,14 +60,14 @@ public class UserComparatorSortTest {
                 new User("Bob", 33),
                 new User("Bob", 23),
                 new User("Sam", 22),
-                new User("Sam",21),
+                new User("Sam", 21),
                 new User("Tom", 20)
         );
         Collections.sort(users, new UserDescByNameDown().thenComparing(new UserDescByAgeDown()));
         System.out.println(users);
         List<User> expect = Arrays.asList(
                 new User("Tom", 20),
-                new User("Sam",22),
+                new User("Sam", 22),
                 new User("Sam", 21),
                 new User("Bob", 33),
                 new User("Bob", 23),
@@ -70,6 +75,7 @@ public class UserComparatorSortTest {
         );
         assertThat(users, is(expect));
     }
+
     @Test
     public void whenComparatorByAgeUpAndNameDown() {
         List<User> users = Arrays.asList(
@@ -77,14 +83,14 @@ public class UserComparatorSortTest {
                 new User("Bob", 33),
                 new User("Bob", 23),
                 new User("Sam", 22),
-                new User("Sam",21),
+                new User("Sam", 21),
                 new User("Tom", 20)
         );
         Collections.sort(users, new UserDescByAgeUp().thenComparing(new UserDescByNameDown()));
         System.out.println(users);
         List<User> expect = Arrays.asList(
                 new User("Tom", 20),
-                new User("Sam",21),
+                new User("Sam", 21),
                 new User("Sam", 22),
                 new User("Bob", 23),
                 new User("Bob", 33),
