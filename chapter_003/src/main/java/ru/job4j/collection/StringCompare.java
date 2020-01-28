@@ -4,15 +4,23 @@ import java.util.Comparator;
 
 public class StringCompare implements Comparator<String> {
     @Override
-    public int compare(String left, String right) {
-        int result = left.length() - right.length();
-        int minLength = Math.min(left.length(), right.length());
-        for (int i = 0; i < minLength; i++) {
-            char c1 = left.charAt(i);
-            char c2 = right.charAt(i);
-            if (c1 != c2) {
-                result = c1 - c2;
-                break;
+    public int compare(String first, String second) {
+        int result = 0;
+        if ( first.length() < second.length() ) {
+            for ( int i = 0; i < first.length(); i++ ) {
+               result = Character.compare(first.charAt(i), second.charAt(i));
+               if ( result != 0 ) break;
+            }
+            if ( result == 0 ) {
+                result = Integer.compare(first.length(), second.length());
+            }
+        } else {
+            for ( int i = 0; i < second.length(); i++ ) {
+                result = Character.compare(first.charAt(i), second.charAt(i));
+                if ( result != 0 ) break;
+            }
+            if ( result == 0 ) {
+                result = Integer.compare(first.length(), second.length());
             }
         }
         return result;
