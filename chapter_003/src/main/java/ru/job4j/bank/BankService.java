@@ -48,9 +48,8 @@ public class BankService {
         boolean result = false;
         Account userDonor = findByRequisite(srcPassport, srcRequisite);
         Account userAcceptor = findByRequisite(destPassport, destRequisite);
-        if (!(userAcceptor == null)) {
-            userDonor.transfer(userAcceptor, amount);
-            result = true;
+        if (!((userDonor == null) && (userAcceptor == null))) {
+            result = userDonor.transfer(userAcceptor, amount);
         }
         return result;
     }
