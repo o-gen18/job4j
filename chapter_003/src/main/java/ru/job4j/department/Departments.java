@@ -24,32 +24,24 @@ public class Departments {
     }
 
     public static void sortDesc(List<String> orgs) {
-//        String[] array = new String[orgs.size()];
-//        for (int i = 0; i < orgs.size()-1; i++) {
-//            array[i].compareTo(array[i+1]);
-//        }
-//        Comparator<String> secondStep = Comparator.naturalOrder();
-//        Comparator<String> reverse = Comparator.reverseOrder();
         Collections.sort(orgs, new DepDescCompDown().thenComparing(Comparator.naturalOrder()));
     }
-//        ArrayList<String> tmplist = new ArrayList<String>();
-//        int i = 1;
-//        for (String value : orgs) {
-//            String start = "";
-//            Comparator tmpCmp;
-//            if ( i > 0 ) {
-//                tmpCmp = Comparator.reverseOrder();
-//            } else {
-//                tmpCmp = Comparator.naturalOrder();
-//            }
-//            Collections.sort(orgs, tmpCmp);
-//            i *= -1;
-//        }
+
 
     public static class DepDescCompDown implements Comparator<String> {
         @Override
         public int compare(String first, String second) {
-            return second.compareTo(first);
+            int result = first.length() - second.length();
+            int minLength = Math.min(first.length(), second.length());
+            for (int i = 0; i < minLength; i++) {
+                char c1 = first.charAt(i);
+                char c2 = second.charAt(i);
+                if (c1 != c2) {
+                    result = c2 - c1;
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
