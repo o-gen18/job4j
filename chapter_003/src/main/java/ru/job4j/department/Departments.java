@@ -16,7 +16,9 @@ public class Departments {
                 start = start + el + "/";
             }
         }
-        return new ArrayList<>(tmp);
+        ArrayList rsl = new ArrayList<>(tmp);
+        Collections.sort(rsl);
+        return rsl;
     }
 
     public static void sortAsc(List<String> orgs) {
@@ -24,7 +26,7 @@ public class Departments {
     }
 
     public static void sortDesc(List<String> orgs) {
-        Collections.sort(orgs, new DepDescCompDown().thenComparing(Comparator.naturalOrder()));
+        Collections.sort(orgs, new DepDescCompDown());
     }
 
 
