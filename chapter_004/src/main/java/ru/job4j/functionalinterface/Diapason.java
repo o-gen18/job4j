@@ -6,7 +6,6 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Diapason {
-    public static double z;
 
     public static List<Double> diapason(int start, int end, Function<Double, Double> func){
         List<Double> list = new ArrayList<>();
