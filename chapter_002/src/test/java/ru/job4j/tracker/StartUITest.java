@@ -5,11 +5,23 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.StringJoiner;
+import java.util.function.Consumer;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 
 public class StartUITest {
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final Consumer<String> output = new Consumer<>() {
+        private final PrintStream stdout = new PrintStream(out);
+
+        @Override
+        public void accept(String s) {
+            stdout.println(s);
+        }
+    };
+
     @Test
     public void whenPrtMenu() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -21,7 +33,7 @@ public class StartUITest {
         StubAction action = new StubAction();
         ArrayList<UserAction> stubAction = new ArrayList<>();
         stubAction.add(action);
-        new StartUI().init(input, new Tracker(), stubAction);
+        new StartUI().init(input, new Tracker(), stubAction, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub action")
@@ -31,25 +43,18 @@ public class StartUITest {
     }
     @Test
     public void whenShowAllAction() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
         Tracker tracker = new Tracker();
         Item item = new Item("Fix bug");
         tracker.add(item);
         ShowAllAction act = new ShowAllAction();
-        act.execute(new StubInput(new String[] {}), tracker);
+        act.execute(new StubInput(new String[] {}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Item: " + item.getName() + "  -  Id: " + item.getId())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
     }
     @Test
     public void whenFindByNameAction() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
         Tracker tracker = new Tracker();
         Item item = new Item("Find all");
         Item item2 = new Item("Find all");
@@ -58,7 +63,7 @@ public class StartUITest {
         tracker.add(item2);
         tracker.add(item3);
         FindByNameAction act = new FindByNameAction();
-        act.execute(new StubInput(new String[] {item.getName()}), tracker);
+        act.execute(new StubInput(new String[] {item.getName()}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Enter Name: ")
                 .add("Here are matches found: ")
@@ -67,6 +72,5 @@ public class StartUITest {
                 .add("Item: " + item3.getName() + "   -   id: " + item3.getId())
                 .toString();
         assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
     }
 }
