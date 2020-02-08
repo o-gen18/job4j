@@ -12,7 +12,7 @@ public class FindByIdAction implements UserAction {
     public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         output.accept("Enter id: ");
         String id = input.askStr("");
-        output.accept("Here is your item: " + tracker.findById(id).getName() + "\r\n");
+        output.accept("Here is your item: " + tracker.findById(id).getName() + System.lineSeparator());
     return true;
     }
 }

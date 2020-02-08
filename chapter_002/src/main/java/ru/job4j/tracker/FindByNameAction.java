@@ -16,7 +16,7 @@ public class FindByNameAction implements UserAction {
         ArrayList<Item> result = tracker.findByName(name);
         output.accept("Here are matches found: ");
         for (Item element : result) {
-            output.accept("Item: " + element.getName() + "   -   id: " + element.getId());
+            output.accept("Item: " + element.getName() + "   -   id: " + element.getId() + System.lineSeparator());
         }
         return true;
     }

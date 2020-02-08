@@ -14,7 +14,7 @@ public class CreateAction implements UserAction {
         String name = input.askStr("");
         Item item = new Item(name);
         tracker.add(item);
-        output.accept("Your Item has been created. Get your id: " + item.getId() + "\r\n");
+        output.accept("Your Item has been created. Get your id: " + item.getId() + System.lineSeparator());
         return true;
     }
 }
