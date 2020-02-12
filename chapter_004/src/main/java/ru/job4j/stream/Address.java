@@ -16,6 +16,10 @@ public class Address {
         this.apartment = apartment;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     @Override
     public String toString() {
         return "City - " + city + ", street - " + street + ", home - " + home + ", apartment - " + apartment;
@@ -32,5 +36,10 @@ public class Address {
         Address address = (Address) o;
         return Objects.equals(city, address.city) && Objects.equals(street, address.street)
                 && Objects.equals(home, address.home) && Objects.equals(apartment, address.apartment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(city, street, home, apartment);
     }
 }
