@@ -21,9 +21,8 @@ public class StudentConvertTest {
         Map<String, Student2> expected = new HashMap<>();
         expected.put("Petrov", new Student2("Ivan","Petrov",34));
         expected.put("Aleksandrov", new Student2("Sergei","Aleksandrov",76));
-        expected.put("Denis", new Student2("Denis","Uskov",40));
-        expected.put("Vladimir", new Student2("Vladimir","Sidorov",87));
-        boolean compare = result.equals(expected);
-        assertThat(compare, is(true));
+        expected.put("Uskov", new Student2("Denis","Uskov",40));
+        expected.put("Sidorov", new Student2("Vladimir","Sidorov",87));
+        assertThat(result, is(expected));
     }
 }
