@@ -25,7 +25,7 @@ public class BankService {
         return users.keySet().stream()
                 .filter(each -> each.getPassport().equals(passport))
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 
     public Account findByRequisite(String passport, String requisite) {
@@ -35,7 +35,7 @@ public class BankService {
             account = users.get(user).stream()
                     .filter(each -> each.getRequisite().equals(requisite))
                     .findFirst()
-                    .get();
+                    .orElse(null);
         }
         return account;
     }
