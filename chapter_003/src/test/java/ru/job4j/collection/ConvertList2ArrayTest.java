@@ -22,10 +22,10 @@ public class ConvertList2ArrayTest {
 
     @Test
     public void convertListOfArraysToSingleList() {
-        List<int[]> list = new ArrayList<int[]>();
-        list.add(new int[]{1, 2});
-        list.add(new int[]{3, 4, 5, 6});
-        list.add(new int[]{4, 5, 6, 7, 7, 2, 432});
+        List<int[]> list = List.of(
+        new int[]{1, 2},
+        new int[]{3, 4, 5, 6},
+        new int[]{4, 5, 6, 7, 7, 2, 432});
         List<Integer> result = ConvertList2Array.convert(list);
         List<Integer> expect = List.of(1, 2, 3, 4, 5, 6, 4, 5, 6, 7, 7, 2, 432);
         assertThat(result, is(expect));
