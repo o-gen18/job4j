@@ -16,10 +16,10 @@ public class PhoneDictionary {
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<Person>();
         for (int i = 0; i < persons.size(); i++) {
-            String name = persons.get(i).getName();
-            String surname = persons.get(i).getSurname();
-            String phone = persons.get(i).getPhone();
-            String address = persons.get(i).getAddress();
+            var name = persons.get(i).getName();
+            var surname = persons.get(i).getSurname();
+            var phone = persons.get(i).getPhone();
+            var address = persons.get(i).getAddress();
             if (name.contains(key) || surname.contains(key) || phone.contains(key) || address.contains(key)) {
                 result.add(persons.get(i));
             }
